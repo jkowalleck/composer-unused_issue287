@@ -1,0 +1,40 @@
+{
+    "name": "jkowalleck/composer-unused_issue287",
+    "description": "display of https://github.com/composer-unused/composer-unused/issues/287",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jkowalleck\\ComposerUnusedIssue287\\": "src/"
+        }
+    },
+    "require": {
+        "swaggest/json-schema": "^0.12.39"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "scripts": {
+        "cs-fix": "@php tools/php-cs-fixer/vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --diff",
+        "dev-setup": [
+            "@composer -dtools/composer-unused-0.7.12 install",
+            "@composer -dtools/composer-unused-0.8.0  install",
+            "@composer update"
+        ],
+        "normalize": "@composer -dtools/composer-normalize normalize --diff $PWD/composer.json",
+        "test": [
+            "@composer validate --no-check-publish",
+            "@test:composer-unused-0.7.12",
+            "@test:composer-unused-0.8.0"
+        ],
+        "test:composer-unused-0.7.12": "@php tools/composer-unused-0.7.12/vendor/icanhazstring/composer-unused/bin/composer-unused --excludeDir=tools",
+        "test:composer-unused-0.8.0": "@php tools/composer-unused-0.8.0/vendor/icanhazstring/composer-unused/bin/composer-unused --excludeDir=tools"
+    },
+    "scripts-descriptions": {
+        "dev-setup": "Install dev-requirements and tools.",
+        "test": "Run all tests!",
+        "test:composer-unused-0.7.12": "Test compoer requirements with composer-unused 0.7.12",
+        "test:composer-unused-0.8.0": "Test compoer requirements with composer-unused 0.8.0"
+    }
+}
