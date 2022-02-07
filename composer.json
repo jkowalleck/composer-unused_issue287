@@ -20,21 +20,25 @@
         "dev-setup": [
             "@composer -dtools/composer-unused-0.7.12 install",
             "@composer -dtools/composer-unused-0.8.0  install",
+            "@composer -dtools/composer-unused-local  dev-setup",
             "@composer update"
         ],
         "normalize": "@composer -dtools/composer-normalize normalize --diff $PWD/composer.json",
         "test": [
             "@composer validate --no-check-publish",
             "@test:composer-unused-0.7.12",
+            "@test:composer-unused-local",
             "@test:composer-unused-0.8.0"
         ],
         "test:composer-unused-0.7.12": "@php tools/composer-unused-0.7.12/vendor/icanhazstring/composer-unused/bin/composer-unused --excludeDir=tools",
-        "test:composer-unused-0.8.0": "@php tools/composer-unused-0.8.0/vendor/icanhazstring/composer-unused/bin/composer-unused --excludeDir=tools"
+        "test:composer-unused-0.8.0": "@php tools/composer-unused-0.8.0/vendor/icanhazstring/composer-unused/bin/composer-unused --excludeDir=tools",
+        "test:composer-unused-local": "@php tools/composer-unused-local/vendor/icanhazstring/composer-unused/bin/composer-unused --excludeDir=tools"
     },
     "scripts-descriptions": {
         "dev-setup": "Install dev-requirements and tools.",
         "test": "Run all tests!",
         "test:composer-unused-0.7.12": "Test compoer requirements with composer-unused 0.7.12",
-        "test:composer-unused-0.8.0": "Test compoer requirements with composer-unused 0.8.0"
+        "test:composer-unused-0.8.0": "Test compoer requirements with composer-unused 0.8.0",
+        "test:composer-unused-local": "Test compoer requirements with composer-unused local"
     }
 }

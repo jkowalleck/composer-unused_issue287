@@ -1,0 +1,30 @@
+{
+  "name": "tools/composer-unused-local",
+  "description": "composer-unused local",
+  "type": "metapackage",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../../composer-unused",
+      "options": {
+        "symlink": false
+      }
+    }
+  ],
+  "require-dev": {
+    "icanhazstring/composer-unused": "*",
+    "roave/security-advisories": "dev-latest"
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "scripts": {
+    "dev-setup": [
+      "rm -rf vendor composer.lock",
+      "@composer install"
+    ]
+  }
+}
